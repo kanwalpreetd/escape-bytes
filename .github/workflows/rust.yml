@@ -18,7 +18,7 @@ jobs:
   fmt:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - run: rustup update
     - run: make fmt
 
@@ -28,7 +28,7 @@ jobs:
         rust: [msrv, latest]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: stellar/actions/rust-cache@main
     - name: Use the minimum supported Rust version
       if: matrix.rust == 'msrv'
@@ -44,11 +44,11 @@ jobs:
     - run: rustup update
     - run: rustup install nightly
     - run: cargo version
-    - uses: stellar/binaries@v17
+    - uses: stellar/binaries@v26
       with:
         name: cargo-hack
         version: 0.5.28
-    - uses: stellar/binaries@v17
+    - uses: stellar/binaries@v26
       with:
         name: cargo-fuzz
         version: 0.11.2
@@ -58,12 +58,12 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: stellar/actions/rust-cache@main
     - run: rustup update
     - run: rustup install nightly
     - run: rustup default stable
-    - uses: stellar/binaries@v17
+    - uses: stellar/binaries@v26
       with:
         name: cargo-hack
         version: 0.5.28
@@ -72,10 +72,10 @@ jobs:
   readme:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: stellar/actions/rust-cache@main
     - run: rustup update
-    - uses: stellar/binaries@v17
+    - uses: stellar/binaries@v26
       with:
         name: cargo-readme
         version: 3.3.1
